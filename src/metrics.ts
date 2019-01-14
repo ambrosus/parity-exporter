@@ -63,7 +63,7 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
 
     gauges.parityUp.set(1);
     // blocknumber
-    gauges.currentBlock.set(parseInt(latestBlockNumber,16));
+    gauges.currentBlock.set(parseInt(latestBlockNumber, 16));
     // version
     gauges.version.set({ value: clientVersion }, 1);
 
