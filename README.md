@@ -1,2 +1,2 @@
 # Parity exporter for Prometheus
-### Docs needed
+### Docs need to be added
