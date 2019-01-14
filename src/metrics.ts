@@ -62,11 +62,13 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
     }
 
     gauges.parityUp.set(1);
+    // blocknumber
+    gauges.currentBlock.set(parseInt(latestBlockNumber,16));
     // version
     gauges.version.set({ value: clientVersion }, 1);
 
     // syncInfo
-    if (!syncInfo) {
+    if (syncInfo != false) {
       const current = parseInt(syncInfo.currentBlock, 16);
       const highest = parseInt(syncInfo.highestBlock, 16);
       gauges.syncStatus.set(highest - current);
