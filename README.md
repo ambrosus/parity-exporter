@@ -16,14 +16,16 @@ The configuration is in YAML, an example with common options:
 rpcUrl: 'http://localhost:8546'
 port: '9998'
 ```
+
 Name     | Description
 ---------|------------
 rpcUrl   | Optional. The rpcUrl to the Parity client. Default http://localhost:8546.
 port   | Optional. The port to expose the metrics at. Default 9997.
 
-All metrics are exported as gauges.
 
 ## Exported Metrics
+
+All metrics are exported as gauges.
 
 | Metric | Meaning | Labels |
 | ------ | ------- | ------ |
