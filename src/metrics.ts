@@ -40,7 +40,11 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
       []
     ),
     parityUp: createGauge('parity_up', 'Parity up/down', []),
-    parityMining: createGauge('parity_mining', 'Client actively mining new blocks', [])
+    parityMining: createGauge(
+      'parity_mining',
+      'Client actively mining new blocks',
+      []
+    )
   };
 
   return async () => {
@@ -65,7 +69,7 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
     }
 
     gauges.parityUp.set(1);
-    gauges.parityMining.set(+ ethMining);
+    gauges.parityMining.set(+ethMining);
     // blocknumber
     gauges.currentBlock.set(parseInt(latestBlockNumber, 16));
     // version
