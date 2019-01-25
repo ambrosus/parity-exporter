@@ -14,8 +14,8 @@ function reportAndExit(message: string, error: Error): void {
 }
 
 export function instrumentProcess(): void {
-  process.on('SIGINT', () => process.exit(0));
-  process.on('SIGTERM', () => process.exit(0));
+  process.once('SIGINT', () => process.exit(0));
+  process.once('SIGTERM', () => process.exit(0));
   process.once('unhandledRejection', (error: Error) => {
     reportAndExit('unhandledRejection bubbled up to the process', error);
   });
