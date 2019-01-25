@@ -84,6 +84,10 @@ describe('Parity Exporter with default config', () => {
     expect(parityResponse).to.contain('parity_up 1');
   });
 
+  it('parity client is mining', () => {
+    expect(parityResponse).to.contain('parity_mining 0');
+  });
+
   it('get current block', () => {
     expect(parityResponse).to.match(/parity_current_block [0-9]+/);
   });

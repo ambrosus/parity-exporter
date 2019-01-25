@@ -26,6 +26,7 @@ All metrics are exported as gauges.
 | Metric | Meaning | Labels |
 | ------ | ------- | ------ |
 | parity_up | Indicates if the Parity client is up or not | |
+| parity_mining | Indicates if the Parity client is mining or not | |
 | parity_version | The Parity client version | |
 | parity_active_peers | How many active peers does the Parity client have | |
 | parity_connected_peers | How many connected peers does the Parity client have | |
