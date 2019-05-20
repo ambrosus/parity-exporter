@@ -16,7 +16,7 @@ export function createServer(rpcUrl: string, port: string): http.Server {
       console.log(e);
 
       process.exit(1);
-    }    
+    }
   });
   app.get('/', (req: express.Request, res: express.Response) => {
     res.send(
