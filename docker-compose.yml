@@ -1,7 +1,7 @@
 version: '3'
 services:
   parity:
-    image: "parity/parity:v2.4.5"
+    image: "parity/parity:stable"
     ports:
       - "8545:8545"
     network_mode: "host"
