@@ -53,6 +53,9 @@ export async function makeRequest(
         id: 42
       }
     });
+    if (method === 'parity_netPeers') {
+      console.log(method, ' -> ', response.data);
+    }
     if (response.data.error != null) {
       console.log(method, ' -> ', response.data.error.message);
     }
