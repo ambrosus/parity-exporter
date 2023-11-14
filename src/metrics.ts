@@ -39,7 +39,8 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
       'Current Block of Parity Node',
       []
     ),
-    parityUp: createGauge('parity_up', 'Parity up/down', [])
+    parityUp: createGauge('parity_up', 'Parity up/down', []),
+    nodeAddress: createGauge('parity_node_address', 'Ethereum Address of the Node', ['address'])
   };
 
   return async () => {
@@ -47,12 +48,14 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
       clientVersion,
       syncInfo,
       latestBlockNumber,
-      peersInfo
+      peersInfo,
+      nodeAddress
     ] = await Promise.all([
       makeRequest(nodeURL, 'web3_clientVersion'),
       makeRequest(nodeURL, 'eth_syncing'),
       makeRequest(nodeURL, 'eth_blockNumber'),
-      makeRequest(nodeURL, 'parity_netPeers')
+      makeRequest(nodeURL, 'parity_netPeers'),
+      makeRequest(nodeURL, 'eth_coinbase') // Make Eth node adresses
     ]);
 
     // See if call failed
@@ -80,5 +83,10 @@ function createMetrics(registry: Registry, nodeURL: string): ICreateMetrics {
     gauges.activePeers.set(peersInfo.active);
     gauges.connectedPeers.set(peersInfo.connected);
     gauges.maxPeers.set(peersInfo.max);
+
+    // node address
+    if (nodeAddress !== false) {
+      gauges.nodeAddress.set({ address: nodeAddress }, 1);
+    }
   };
 }
